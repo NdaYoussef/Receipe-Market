@@ -1,6 +1,26 @@
 var detailsRow = document.getElementById("detailsRow");
 var nav = document.querySelector('nav');
 
+var categoryMap = {
+    "breakfast": "الفطار",
+    "lunch": "الغداء",
+    "dinner": "العشاء",
+    "dessert": "الحلويات",
+    "drinks": "المشروبات",
+    "salads": "السلطات",
+    "soups": "الحساء",
+    "meats": "اللحوم"
+};
+var unitMap = {
+    "g": "جرام",
+    "kg": "كيلو",
+    "ml": "مل",
+    "l": "لتر",
+    "tsp": "ملعقة صغيرة",
+    "tbsp": "ملعقة كبيرة",
+    "cup": "كوب",
+    "حبة": "حبة"
+};
 var params = new URLSearchParams(window.location.search);
 var id = params.get('id');
 
@@ -72,20 +92,19 @@ function displayRecipeDetails(recipe){
 
                 <div class="col left-side">
                     <div class="category-rating">
-                        <span class="cat-title">وجبة رئيسية</span>
+                        <span class="cat-title">${categoryMap[recipe.category]}</span>
                         <span class="rate">
-                            <i class="fa-regular fa-star"></i> 4.9
+                            <i class="fa-regular fa-star"></i> ${recipe.rating}
                         </span>
                         <span class="rate-number">
-                            (120 تقييم)
+                            (${recipe.reviews} تقييم)
                         </span>
                     </div>
                     <div class="title">
-                        <h2>دجاج مشوي بالزعتر والليمون</h2>
+                        <h2>${recipe.name}</h2>
                     </div>
                     <div class="description">
-                        <p>وجبة صحية وسهلة التحضير لمحبي النكهات العربية الأصيلة، تجمع بين حموضة الليمون المنعشة ورائحة
-                            الزعتر الجبلي المميزة.</p>
+                        <p>${recipe.description}</p>
                     </div>
                     <div class="serving-size">
                         <h3><i class="fa-solid fa-users"></i> عدد الأشخاص</h3>
@@ -101,82 +120,32 @@ function displayRecipeDetails(recipe){
                             <span>تحديد الكل</span>
                         </div>
                         <div class="ingredient-card">
-                            <label class="ingredient">
+                        ${recipe.ingredients.map(ingredient =>`<label class="ingredient">
                                 <div class="check">
                                     <input type="checkbox" name="" id="" checked>
                                     <div class="ingredient-text">
-                                        <p>صدر دجاج طازج</p>
-                                        <p class="quantity">500 جرام</p>
+                                        <p>${ingredient.name}</p>
+                                        <p class="quantity">${ingredient.quantity} ${unitMap[ingredient.unit]}</p>
                                     </div>
                                 </div>
-                                <span class="price">35 ر.س</span>
-                            </label>
-                            <label class="ingredient">
-                                <div class="check">
-                                    <input type="checkbox" name="" id="" checked>
-                                    <div class="ingredient-text">
-                                        <p>زعتر بري مجفف</p>
-                                        <p class="quantity">50 جرام</p>
-                                    </div>
-                                </div>
-                                <span class="price">12 ر.س</span>
-                            </label>
-                            <label class="ingredient">
-                                <div class="check">
-                                    <input type="checkbox" name="" id="" checked>
-                                    <div class="ingredient-text">
-                                        <p>زيت زيتون بكر</p>
-                                        <p class="quantity">100 مل</p>
-                                    </div>
-                                </div>
-                                <span class="price">18 ر.س</span>
-                            </label>
-                            <label class="ingredient">
-                                <div class="check">
-                                    <input type="checkbox" name="" id="" checked>
-                                    <div class="ingredient-text">
-                                        <p>ليمون طازج</p>
-                                        <p class="quantity">3 حبات</p>
-                                    </div>
-                                </div>
-                                <span class="price">10 ر.س</span>
-                            </label>
+                                <span class="price">${ingredient.price} ر.س</span>
+                            </label>`).join('')}
+                            
                         </div>
                         <div class="steps">
                             <h3><i class="fa-solid fa-list-ol"></i> خطوات التحضير</h3>
-                            <div class="step">
+                            ${recipe.instructions.map((step,index) => `
+                                 <div class="step">
                                 <div class="count">
-                                    <div class="number">1</div>
-                                    <div class="line"></div>
+                                    <div class="number">${index + 1}</div>
+                                   ${index < recipe.instructions.length - 1 ? ` <div class="line"></div>`:''} 
                                 </div>
                                 <div class="step-text">
-                                    <h4>تتبيل الدجاج</h4>
-                                    <p>اخلط الزعتر مع زيت الزيتون، عصير الليمون، والملح والفلفل في وعاء كبير. أضف قطع
-                                        الدجاج واتركها تتبل لمدة 30 دقيقة على الأقل.</p>
+                                    <p>${step}</p>
                                 </div>
                             </div>
-                            <div class="step">
-                                <div class="count">
-                                    <div class="number">2</div>
-                                    <div class="line"></div>
-                                </div>
-                                <div class="step-text">
-                                    <h4>تسخين الفرن</h4>
-                                    <p>قم بتسخين الفرن مسبقاً على درجة حرارة 200 مئوية. جهز صينية الفرن بدهنها بالقليل
-                                        من زيت الزيتون.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="step">
-                                <div class="count">
-                                    <div class="number">3</div>
-                                </div>
-                                <div class="step-text">
-                                    <h4>الشوي والتقديم</h4>
-                                    <p>ضع الدجاج في الفرن لمدة 25-30 دقيقة حتى ينضج ويتحمر الوجه. قدمه ساخناً مع الأرز
-                                        أو السلطة.</p>
-                                </div>
-                            </div>
+                                `).join('')}
+                           
                         </div>
                     </div>
                 </div>
