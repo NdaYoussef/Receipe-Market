@@ -158,7 +158,7 @@ nav .row .col .user-icon i {
 .details .row {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: flex-start;
     gap: 40px;
 }
@@ -300,8 +300,14 @@ button:active {
 }
 
 /************************* Details Left Side ****************************/
-.details .category-rating {
-    align-self: self-end;
+.details .left-side {
+    align-items: self-start;
+}
+
+.details .left-side {
+    padding-top: 40px;
+    text-align: right;
+
 }
 
 .details .category-rating .cat-title {
@@ -314,10 +320,6 @@ button:active {
     padding: 4px 12px;
     border-radius: 20px;
 
-}
-
-.details .left-side {
-    padding-top: 40px;
 }
 
 .details .category-rating .rate {
@@ -340,3 +342,178 @@ button:active {
     line-height: 24px;
 }
 
+.details .title h2 {
+    color: #0F172A;
+    font-size: 48px;
+    font-weight: 900;
+    margin-top: 16px;
+    line-height: 48px;
+}
+
+.details .description p {
+    color: #475569;
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 16px;
+    line-height: 29.25px;
+}
+
+.details .serving-size {
+    width: 100%;
+    margin-top: 40px;
+}
+
+.details .serving-size h3 {
+    color: #0F172A;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 28px;
+    margin-bottom: 16px;
+}
+
+.details .serving-size h3 i {
+    color: #EC5B13;
+    font-size: 18px;
+}
+
+.details .serving-size .serving-options {
+    display: flex;
+    gap: 12px;
+}
+
+.details .serving-size .serving-options button {
+    color: #475569;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 12px 24px;
+    font-weight: 700;
+    border: 2px solid #E2E8F0;
+    background-color: transparent;
+    border-radius: 25px;
+    flex: 1;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.details .serving-size .serving-options button:hover {
+    border: 2px solid #F2A985;
+}
+
+.details .serving-size .serving-options button.active {
+    background-color: #EC5B13;
+    color: white;
+    border: none;
+
+}
+
+.details .ingredients {
+    width: 100%;
+    margin-top: 26px;
+
+}
+
+.details .ingredients .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.details .ingredients .title h3 {
+    color: #0F172A;
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 700;
+}
+
+.details .ingredients .title h3 i {
+    color: #EC5B13;
+    font-size: 20px;
+}
+
+.details .ingredients .title span {
+    color: #EC5B13;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+}
+
+.details .ingredients .ingredient-card {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+
+}
+
+.details .ingredients .ingredient .check {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.details .ingredients .ingredient {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 16px;
+    border-radius: 25px;
+    width: 48%;
+    border: 1px solid #E2E8F0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+}
+
+.details .ingredients .ingredient:hover {
+    border: 1px solid #F8C9B6;
+}
+
+.details .ingredients .ingredient input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 1px solid #767D8A;
+    position: relative;
+}
+
+.details .ingredients .ingredient input[type="checkbox"]:checked {
+    background-color: #EC5B13;
+    border: 1px solid #EC5B13;
+}
+
+.details .ingredients .ingredient input[type="checkbox"]:checked::after {
+    position: absolute;
+    right: 2px;
+    content: "✔";
+    color: white;
+    font-size: 15px;
+}
+.details .ingredients .ingredient input[type="checkbox"]:checked + .ingredient-text p:first-child{
+   text-decoration: line-through;
+     opacity: 0.8;
+
+}
+.details .ingredients .ingredient .ingredient-text{
+    color: #94A3B8;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+}
+.details .ingredients .ingredient .ingredient-text .quantity{
+    color: #64748B;
+    line-height: 20px;
+    font-weight: 400;
+}
+.details .ingredients .ingredient .price{
+    color: #EC5B13;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 700;
+}
