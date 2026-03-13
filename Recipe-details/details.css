@@ -495,25 +495,95 @@ button:active {
     color: white;
     font-size: 15px;
 }
-.details .ingredients .ingredient input[type="checkbox"]:checked + .ingredient-text p:first-child{
-   text-decoration: line-through;
-     opacity: 0.8;
+
+.details .ingredients .ingredient input[type="checkbox"]:checked+.ingredient-text p:first-child {
+    text-decoration: line-through;
+    opacity: 0.8;
 
 }
-.details .ingredients .ingredient .ingredient-text{
+
+.details .ingredients .ingredient .ingredient-text {
     color: #94A3B8;
     font-size: 16px;
     line-height: 24px;
     font-weight: 600;
 }
-.details .ingredients .ingredient .ingredient-text .quantity{
+
+.details .ingredients .ingredient .ingredient-text .quantity {
     color: #64748B;
     line-height: 20px;
     font-weight: 400;
 }
-.details .ingredients .ingredient .price{
+
+.details .ingredients .ingredient .price {
     color: #EC5B13;
     font-size: 16px;
     line-height: 24px;
     font-weight: 700;
+}
+
+.details .steps {
+    margin-top: 40px ;
+}
+
+.details .steps h3 {
+    color: #0F172A;
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.details .steps h3 i {
+    color: #EC5B13;
+    font-size: 20px;
+}
+
+.details .steps .step {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    position: relative;
+    gap: 20px;
+
+}
+
+.details .steps .step .count .number {
+    background-color: #EC5B13;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    width: 30px;
+    height: 30px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.details .steps .step .count .line {
+    background-color: #E2E8F0;
+    width: 3px;
+    height: 100%;
+    position: absolute;
+    top: 30px;
+    right: 12px;
+
+}
+.details .steps .step .step-text{
+    padding-bottom: 32px;
+}
+.details .steps .step .step-text h4{
+    color: #0F172A;
+    font-size: 18px;
+    line-height: 28px;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+.details .steps .step .step-text p{
+    color: #475569;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
 }
