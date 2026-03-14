@@ -38,7 +38,7 @@ document.addEventListener('scroll', function () {
 
 
 var xhr = new XMLHttpRequest();
-xhr.open('Get',`../data/recipes.json`);
+xhr.open('Get',`https://raw.githubusercontent.com/khaledeng/RecipeMarket/refs/heads/main/data/recipes.json`);
 xhr.send();
 xhr.responseType = "json";
 xhr.onload = function(){
@@ -109,9 +109,9 @@ function displayRecipeDetails(recipe){
                     <div class="serving-size">
                         <h3><i class="fa-solid fa-users"></i> عدد الأشخاص</h3>
                         <div class="serving-options">
-                            <button class="serving-btn active">2 أشخاص</button>
-                            <button class="serving-btn ">4 أشخاص</button>
-                            <button class="serving-btn ">6 أشخاص</button>
+                            <button class="serving-btn active" >2 أشخاص</button>
+                            <button class="serving-btn" >4 أشخاص</button>
+                            <button class="serving-btn " >6 أشخاص</button>
                         </div>
                     </div>
                     <div class="ingredients">
@@ -151,5 +151,22 @@ function displayRecipeDetails(recipe){
                 </div>
      `
      
+var selectedIngredients = recipe.ingredients.map(ing => ({ ...ing, selected: true }));
+
+function calcTotal() {
+    let total = selectedIngredients
+        .filter(ing => ing.selected)
+        .reduce((sum, ing) => sum + ing.price, 0);
+    document.querySelector('.add-to-cart .price p').textContent = total + ' ر.س';
+}
+
+document.querySelectorAll('.ingredient input[type="checkbox"]').forEach((checkbox, i) => {
+    checkbox.addEventListener('change', function () {
+        selectedIngredients[i].selected = this.checked;
+        calcTotal();
+    });
+});
+
+
 }
 
