@@ -17,12 +17,13 @@ body{
   align-items:center;
   gap:12px;
   padding:14px 20px;
-  background:#ffffff;
-  border-bottom:1px solid #e7eaf3;
+  background:#ffffff9b;
+  border-bottom:1px solid #e7eaf381;
   position:sticky;
   top:0;
   z-index:100;
   box-shadow:0 2px 8px rgba(0,0,0,0.07);
+  backdrop-filter: blur(10px);
 }
 
 .brand{
@@ -426,6 +427,7 @@ body{
   max-width:1200px;
   margin-inline:auto;
   transition: 0.3s;
+  padding-top:10px ;
 }
 
 @media (max-width:1000px){
@@ -466,9 +468,12 @@ body{
   width:100%;
   height:100%;
   object-fit:cover;
+  transition:transform .3s;
 }
 
-
+.image img:hover{
+transform:scale(1.05);
+}
 
 .rating{
   position:absolute;

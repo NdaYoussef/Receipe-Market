@@ -212,7 +212,6 @@ pagination.append(btn);
 }
 
 
-
 var next = document.createElement("button");
 
 next.innerText="التالي";
@@ -308,3 +307,45 @@ r.addEventListener("change",filterData);
 dietRadios.forEach(function(r){
 r.addEventListener("change",filterData);
 });
+
+
+function scrollTopPage(){
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+}
+
+pagination.addEventListener("click",scrollTopPage);
+
+
+var clearBtn=document.getElementById("clearFilters");
+
+if(clearBtn){
+
+clearBtn.onclick=function(){
+
+search.value="";
+
+timeFilter.value=60;
+
+timeValue.innerText=60;
+
+mealRadios.forEach(function(r){
+r.checked=r.value=="";
+});
+
+dietRadios.forEach(function(r){
+r.checked=r.value=="";
+});
+
+filteredRecipes=recipes;
+
+currentPage=1;
+
+showPage();
+
+}
+
+}
