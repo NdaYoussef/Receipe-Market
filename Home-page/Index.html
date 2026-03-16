@@ -1,169 +1,168 @@
 <!doctype html>
 <html lang="ar">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-    />
-    <link rel="stylesheet" href="./index.css" />
-    
-  </head>
 
-  <body>
-    
-    <!-- NavBar-start -->
-   
-<header class="topbar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+  <link rel="stylesheet" href="./index.css" />
 
-  <div class="my-recipes">
-    <span class="recipes-icon">🍴</span>
-    <span class="recipes-text">وصفاتي</span>
-  </div>
+</head>
 
-  <div class="topbar-right">
-    <a href="./Index.html" class="active">الرئيسية</a>
-    <a href="../Recipes-page/recipes.html" >الوصفات</a>
-    <a href="">المفضلة</a>
-    <a href="../Carts-pages/cart.html">السله</a>
-  </div>
+<body>
 
-  <div class="top-search">
-    <input type="text" id="search" placeholder="ابحث عن وصفة أو مكون...">
-    <span class="search-icon">🔍</span>
-  </div>
+  <!-- NavBar-start -->
 
-   <div class="topbar-left">
-    <button class="avatar-btn" aria-label="حساب المستخدم">👤</button>
-    <button class="notif-btn" aria-label="الإشعارات">🔔</button>
-  </div>
- 
-</header>
+  <header class="topbar">
 
-    <!-- NavBar-end -->
+    <div class="my-recipes">
+      <span class="recipes-icon">🍴</span>
+      <span class="recipes-text">وصفاتي</span>
+    </div>
 
-    <!-- hero -->
-    <section class="hero">
-      
-      <img id="heroImg" />
+    <div class="topbar-right">
+      <a href="./Index.html" class="active">الرئيسية</a>
+      <a href="../Recipes-page/recipes.html">الوصفات</a>
+      <a href="">المفضلة</a>
+      <a href="../Carts-pages/cart.html">السله</a>
+    </div>
 
-      <div class="hero-content">
-        <span class="badge">⭐ وصفة اليوم</span>
+    <div class="top-search">
+      <input type="text" id="search" placeholder="ابحث عن وصفة أو مكون...">
+      <span class="search-icon">🔍</span>
+    </div>
 
-        <h1 id="heroTitle"></h1>
+    <div class="topbar-left">
+      <button class="avatar-btn" aria-label="حساب المستخدم">👤</button>
+      <button class="notif-btn" aria-label="الإشعارات">🔔</button>
+    </div>
 
-        <p id="heroDesc"></p>
+  </header>
 
-        <div class="hero-meta">
-          <span id="heroTime"></span>
-          <span id="heroServings"></span>
-          <span id="heroCalories"></span>
-        </div>
+  <!-- NavBar-end -->
 
-        <button id="heroBtn">عرض الوصفة</button>
+  <!-- hero -->
+  <section class="hero">
+
+    <img id="heroImg" />
+
+    <div class="hero-content">
+      <span class="badge">⭐ وصفة اليوم</span>
+
+      <h1 id="heroTitle"></h1>
+
+      <p id="heroDesc"></p>
+
+      <div class="hero-meta">
+        <span id="heroTime"></span>
+        <span id="heroServings"></span>
+        <span id="heroCalories"></span>
       </div>
-    </section>
-    <!-- end hero -->
 
-    <!-- categories -->
-    <section class="categories">
-      <h2>التصنيفات</h2>
+      <button id="heroBtn">عرض الوصفة</button>
+    </div>
+  </section>
+  <!-- end hero -->
 
-      <div class="categories-grid" id="categoriesGrid"></div>
-    </section>
+  <!-- categories -->
+  <section class="categories">
+    <h2>التصنيفات</h2>
 
-    <section class="popular">
-      <h2>الوصفات المشهورة</h2>
+    <div class="categories-grid" id="categoriesGrid"></div>
+  </section>
 
-      <div class="popular-grid" id="popularGrid"></div>
-      <button class="scroll-btn scroll-right" onclick="scrollRight()">❯</button>
-    </section>
-    <!-- end categories -->
+  <section class="popular">
+    <h2>الوصفات المشهورة</h2>
 
-    <!-- subscribe section -->
+    <div class="popular-grid" id="popularGrid"></div>
+    <button class="scroll-btn scroll-right" onclick="scrollRight()">❯</button>
+  </section>
+  <!-- end categories -->
 
-    <section class="subscribe">
-      <div class="subscribe-container">
-        <div class="image">
-          <img src="chef.png" />
-        </div>
+  <!-- subscribe section -->
 
-        <div class="content">
-          <h2>هل أنت جاهز للطهي؟</h2>
+  <section class="subscribe">
+    <div class="subscribe-container">
+      <div class="image">
+        <img src="chef.png" />
+      </div>
 
-          <p>
-            انضم إلى أكثر من 50 ألف من عشاق الطبخ واحصل على وصفات حصرية أسبوعياً
-            مباشرة إلى بريدك الإلكتروني.
-          </p>
+      <div class="content">
+        <h2>هل أنت جاهز للطهي؟</h2>
 
-          <div class="form">
-            <button>اشتراك الآن</button>
+        <p>
+          انضم إلى أكثر من 50 ألف من عشاق الطبخ واحصل على وصفات حصرية أسبوعياً
+          مباشرة إلى بريدك الإلكتروني.
+        </p>
 
-            <input type="email" placeholder="بريدك الإلكتروني" />
-          </div>
+        <div class="form">
+          <button>اشتراك الآن</button>
+
+          <input type="email" placeholder="بريدك الإلكتروني" />
         </div>
       </div>
-    </section>
-    <!-- end subscribe -->
+    </div>
+  </section>
+  <!-- end subscribe -->
 
-    <!-- footer -->
+  <!-- footer -->
 
-    <footer>
-      <div class="footer-container">
-        <div class="footer-col brand">
-          <h3>سفرة</h3>
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col brand">
+        <h3>سفرة</h3>
 
-          <p>
-            منصتكم المفضلة لاكتشاف أشهى الوصفات العربية والعالمية نوفر لكم
-            المكونات الطازجة والخطوات البسيطة لكل وجبة.
-          </p>
+        <p>
+          منصتكم المفضلة لاكتشاف أشهى الوصفات العربية والعالمية نوفر لكم
+          المكونات الطازجة والخطوات البسيطة لكل وجبة.
+        </p>
 
-          <div class="social">
-            <span>○</span>
-            <span>○</span>
-            <span>○</span>
-          </div>
-        </div>
-
-        <div class="footer-col">
-          <h3>روابط سريعة</h3>
-
-          <ul>
-            <li>عن سفرة</li>
-            <li>أحدث الوصفات</li>
-            <li>الطباخون المتميزون</li>
-            <li>انضم إلينا</li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h3>الدعم والمساعدة</h3>
-
-          <ul>
-            <li>الأسئلة الشائعة</li>
-            <li>سياسة الخصوصية</li>
-            <li>شروط الاستخدام</li>
-            <li>اتصل بنا</li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h3>تحميل التطبيق</h3>
-
-          <p>احصل على تجربة أفضل عبر تطبيقنا للهواتف الذكية.</p>
-
-          <div class="apps">
-            <div class="app-btn">App Store</div>
-
-            <div class="app-btn">Google Play</div>
-          </div>
+        <div class="social">
+          <span>○</span>
+          <span>○</span>
+          <span>○</span>
         </div>
       </div>
 
-      <div class="copyright">جميع الحقوق محفوظة © 2024 سفرة للوصفات والطبخ</div>
-    </footer>
-    <!-- end footer -->
-    <script src="./index.js"></script>
-  </body>
+      <div class="footer-col">
+        <h3>روابط سريعة</h3>
+
+        <ul>
+          <li>عن سفرة</li>
+          <li>أحدث الوصفات</li>
+          <li>الطباخون المتميزون</li>
+          <li>انضم إلينا</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>الدعم والمساعدة</h3>
+
+        <ul>
+          <li>الأسئلة الشائعة</li>
+          <li>سياسة الخصوصية</li>
+          <li>شروط الاستخدام</li>
+          <li>اتصل بنا</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>تحميل التطبيق</h3>
+
+        <p>احصل على تجربة أفضل عبر تطبيقنا للهواتف الذكية.</p>
+
+        <div class="apps">
+          <div class="app-btn">App Store</div>
+
+          <div class="app-btn">Google Play</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="copyright">جميع الحقوق محفوظة © 2024 سفرة للوصفات والطبخ</div>
+  </footer>
+  <!-- end footer -->
+  <script src="./index.js"></script>
+</body>
+
 </html>
