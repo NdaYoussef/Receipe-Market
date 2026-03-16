@@ -331,24 +331,35 @@ nav .row .col .user-icon i {
   background: #ff7a26;
 }
 /* subscribe */
-
 .subscribe {
-  padding: 60px;
+  padding: 80px 20px;
+  background: #fff5f0; 
+  display: flex;
+  justify-content: center;
 }
 
 .subscribe-container {
   background: #ff5a0e;
-  border-radius: 20px;
-  padding: 40px;
+  border-radius: 25px;
+  padding: 50px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 40px;
+  gap: 50px;
+  max-width: 1200px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  flex-wrap: wrap;
 }
 
 .subscribe .image img {
   width: 450px;
-  border-radius: 20px;
+  border-radius: 25px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.subscribe .image img:hover {
+  transform: scale(1.05);
 }
 
 .subscribe .content {
@@ -357,36 +368,78 @@ nav .row .col .user-icon i {
 }
 
 .subscribe h2 {
-  font-size: 36px;
+  font-size: 42px;
   margin-bottom: 20px;
+  line-height: 1.2;
 }
 
 .subscribe p {
+  font-size: 18px;
   line-height: 1.8;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
 .form {
   display: flex;
   gap: 15px;
+  flex-wrap: wrap;
 }
 
 .form input {
   flex: 1;
-  padding: 15px;
+  padding: 15px 20px;
   border: none;
   border-radius: 30px;
+  font-size: 16px;
+  outline: none;
+}
+
+.form input::placeholder {
+  color: #888;
 }
 
 .form button {
   background: #0c1a3c;
   color: white;
   border: none;
-  padding: 15px 25px;
+  padding: 15px 30px;
   border-radius: 30px;
   font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
+.form button:hover {
+  background: #061029;
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .subscribe-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .subscribe .image img {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 30px;
+  }
+
+  .form {
+    flex-direction: column;
+  }
+
+  .form button {
+    width: 100%;
+  }
+
+  .form input {
+    width: 100%;
+  }
+}
 /* footer */
 
 footer {
