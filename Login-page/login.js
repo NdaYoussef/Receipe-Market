@@ -3,8 +3,7 @@ var username = document.getElementById("username");
 var password = document.getElementById("password");
 var loginBtn = document.getElementById("loginBtn");
 var nav = document.querySelector('nav');
-
-// Auto Slider
+/************** Slider ***************/
 var slides = document.querySelectorAll('.slide');
 var dots = document.querySelectorAll('.dot');
 var current = 0;
@@ -17,13 +16,11 @@ function goToSlide(index) {
     dots[current].classList.add('active');
 }
 
-// Auto play كل 4 ثواني
 setInterval(function () {
     var next = (current + 1) % slides.length;
     goToSlide(next);
 }, 4000);
 
-// كليك على الدوتس
 dots.forEach(function (dot, i) {
     dot.addEventListener('click', function () {
         goToSlide(i);
@@ -40,18 +37,13 @@ document.addEventListener('scroll', function () {
         nav.style.backgroundColor = "#F8F6F6"
     }
 })
+/************** Slider ***************/
+
+
 
 loginBtn.onclick = function () {
-
-
-
-
     var userValue = username.value;
     var passValue = password.value;
-
-
-
-
 
     var xhr = new XMLHttpRequest();
 
@@ -60,67 +52,34 @@ loginBtn.onclick = function () {
     xhr.responseType = "json";
 
     xhr.send();
-
-
-
     xhr.onload = function () {
-
-
         var users = xhr.response.users;
-
-
-
         var found = false;
-
-
-
-
         for (var u of users) {
-
-
-
             if (u.username == userValue && u.password == passValue) {
-
                 found = true;
-
-
-
                 localStorage.setItem("role", u.role);
-
-
-
-
                 if (u.role == "admin") {
-
                     window.location.href = "../Recipes-page/recipes.html";//الداشبورد
-
                 }
-
-
-
-
                 else {
 
                     window.location.href = "../Home-page/Index.html";
-
                 }
-
-
                 break;
 
             }
-
-
         }
-
-
-
-
-
         if (found == false) {
 
-            alert("اسم المستخدم او كلمة المرور غير صحيحة");
+            var dialog = document.getElementById('errorDialog');
+            dialog.showModal();
+            document.body.style.overflow = 'hidden';
 
+            document.getElementById('closeError').onclick = function () {
+                dialog.close();
+                document.body.style.overflow = '';
+            };
         }
 
 
