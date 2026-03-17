@@ -4,7 +4,7 @@
       "id": 1,
       "name": "دجاج مشوي بالزعتر",
       "category": "dinner",
-      "image": "https://kitchen.sayidaty.net/uploads/small/91/911c3fef75e92dac45843260d90d89d1_w750_h500.jpg",
+      "image": "./data/images/download.jpg",
       "price": 75,
       "rating": 4.8,
       "reviews": 245,
