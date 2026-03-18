@@ -85,6 +85,7 @@ function addToCart(recipe) {
 
     document.getElementById('closeDialog').onclick = function () {
         dialog.close();
+         window.location.href ="../Recipes-page/recipes.html";
         document.body.style.overflow = '';
     };
 
