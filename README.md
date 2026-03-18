@@ -1,4 +1,4 @@
-# RecipeCart
+# RecipeMarket
 
 RecipeCart is a front-end web application that combines a recipe platform with an e-commerce shopping experience. Users can browse different food recipes and instantly add all the required ingredients of a selected recipe to their shopping cart with one click.
 
