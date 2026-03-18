@@ -51,20 +51,26 @@ function nextRecipe() {
 
 loadHero();
 
-//load categories
+// load categories
 async function loadCategories() {
   let res = await fetch("../data/categories.json");
   let data = await res.json();
 
   let grid = document.getElementById("categoriesGrid");
 
+  grid.innerHTML = ""; // مهم عشان ميتكررش المحتوى
+
   data.categories.forEach((c) => {
     grid.innerHTML += `
-<div class="cat">
-<div>${c.icon}</div>
-<p>${c.name}</p>
-</div>
-`;
+      <div class="cat" 
+           onclick="window.location.href='../Recipes-page/recipes.html?category=${c.id}'"
+           style="cursor:pointer">
+
+        <div>${c.icon}</div>
+        <p>${c.name}</p>
+
+      </div>
+    `;
   });
 }
 
@@ -104,9 +110,9 @@ async function loadPopular() {
 
   let grid = document.getElementById("popularGrid");
 
-  data.recipes.slice(0, 4).forEach((r) => {
+data.recipes.slice(0, 4).forEach((r) => {
     grid.innerHTML += `
-        <div class="card">
+        <div class="card" onclick="window.location.href='../Recipe-details/details.html?id=${r.id}'" style="cursor:pointer">
         <img src="${r.image}">
         <div class="card-body">
         <h4>${r.name}</h4>
