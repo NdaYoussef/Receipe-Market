@@ -1,28 +1,11 @@
-var nav = document.querySelector('nav');
-document.addEventListener('scroll', function () {
-    if (window.scrollY > 10) {
-        nav.classList.add('scrolled-bg');
-        nav.style.backgroundColor = "rgba(255, 255, 255, 0.7)"
-
-    }
-    else {
-        nav.classList.remove('scrolled-bg');
-        nav.style.backgroundColor = "#F8F6F6"
-    }
-})
-
- 
-// ===== favourite.js =====
-
 document.addEventListener('DOMContentLoaded', () => {
   loadFavorites();
   setupFilters();
   setupClearAll();
 });
 
-// ===== جيب المفضلة من localStorage =====
-function getFavorites() {
-  const data = localStorage.getItem('favorites');
+function getFavoriteIds() {
+  const data = localStorage.getItem('favoriteRecipes');
   if (!data) return [];
   try {
     const parsed = JSON.parse(data);
@@ -31,45 +14,53 @@ function getFavorites() {
     return [];
   }
 }
-// ===== احفظ المفضلة في localStorage =====
-function saveFavorites(favorites) {
-  localStorage.setItem('favorites', JSON.stringify(favorites));
+
+function saveFavoriteIds(ids) {
+  localStorage.setItem('favoriteRecipes', JSON.stringify(ids));
 }
 
-// ===== تحميل وعرض المفضلة =====
-function loadFavorites(filter = 'all') {
+async function loadFavorites(filter = 'all') {
   const grid = document.getElementById('recipesGrid');
   const emptyState = document.getElementById('emptyState');
 
-  let favorites = getFavorites();
+  const ids = getFavoriteIds();
 
-  if (favorites.length === 0) {
+  if (ids.length === 0) {
     grid.innerHTML = '';
     emptyState.style.display = 'block';
     return;
   }
 
-  if (filter !== 'all') {
-    favorites = favorites.filter(r => r.category === filter);
-  }
+  try {
+    const response = await fetch('../data/recipes.json');
+    const data = await response.json();
+    let favorites = data.recipes.filter(r => ids.includes(r.id));
 
-  if (favorites.length === 0) {
-    grid.innerHTML = '<p style="text-align:center; color:#9CA3AF; padding:40px;">لا توجد وصفات في هذا التصنيف</p>';
+    if (filter !== 'all') {
+      favorites = favorites.filter(r => r.category === filter);
+    }
+
+    if (favorites.length === 0) {
+      grid.innerHTML = '<p style="text-align:center; color:#9CA3AF; padding:40px;">لا توجد وصفات في هذا التصنيف</p>';
+      emptyState.style.display = 'none';
+      return;
+    }
+
     emptyState.style.display = 'none';
-    return;
-  }
+    grid.innerHTML = favorites.map((recipe, index) => renderCard(recipe, index)).join('');
 
-  emptyState.style.display = 'none';
-  grid.innerHTML = favorites.map((recipe, index) => renderCard(recipe, index)).join('');
+  } catch(e) {
+    console.error(e);
+    grid.innerHTML = '<p style="text-align:center; color:red; padding:40px;">حدث خطأ في تحميل البيانات</p>';
+  }
 }
 
-// ===== رسم كارد =====
 function renderCard(recipe, index) {
   const totalTime = (recipe.prepTime || 0) + (recipe.cookTime || 0);
   return `
     <div class="recipe-card" style="animation-delay: ${index * 0.07}s">
       <div class="card-image-wrapper">
-        <img src="${recipe.image}" alt="${recipe.name}" onerror="this.src='https://via.placeholder.com/300x220'" />
+        <img src="${recipe.image}" alt="${recipe.name}" onerror="this.src='https://placehold.co/300x220'" />
         <button class="heart-btn" onclick="removeFavorite(${recipe.id})">❤️</button>
         <div class="rating-badge">⭐ ${recipe.rating} (${recipe.reviews})</div>
       </div>
@@ -85,17 +76,15 @@ function renderCard(recipe, index) {
   `;
 }
 
-// ===== إزالة وصفة =====
 function removeFavorite(recipeId) {
-  let favorites = getFavorites();
-  favorites = favorites.filter(r => r.id !== recipeId);
-  saveFavorites(favorites);
+  let ids = getFavoriteIds();
+  ids = ids.filter(id => id !== recipeId);
+  saveFavoriteIds(ids);
   showNotification('تم إزالة الوصفة من المفضلة');
   const activeFilter = document.querySelector('.filter-btn.active')?.dataset.filter || 'all';
   loadFavorites(activeFilter);
 }
 
-// ===== الفلاتر =====
 function setupFilters() {
   const filterBtns = document.querySelectorAll('.filter-btn');
   filterBtns.forEach(btn => {
@@ -107,7 +96,6 @@ function setupFilters() {
   });
 }
 
-// ===== مسح الكل =====
 function setupClearAll() {
   const clearBtn = document.getElementById('clearAllBtn');
   const modalOverlay = document.getElementById('modalOverlay');
@@ -115,8 +103,8 @@ function setupClearAll() {
   const cancelBtn = document.getElementById('cancelClearBtn');
 
   clearBtn.addEventListener('click', () => {
-    const favorites = getFavorites();
-    if (favorites.length === 0) {
+    const ids = getFavoriteIds();
+    if (ids.length === 0) {
       showNotification('لا توجد وصفات مفضلة لمسحها');
       return;
     }
@@ -124,7 +112,7 @@ function setupClearAll() {
   });
 
   confirmBtn.addEventListener('click', () => {
-    saveFavorites([]);
+    saveFavoriteIds([]);
     modalOverlay.classList.remove('show');
     showNotification('تم مسح جميع الوصفات المفضلة');
     loadFavorites();
@@ -139,12 +127,10 @@ function setupClearAll() {
   });
 }
 
-// ===== الانتقال لصفحة التفاصيل =====
 function goToDetails(id) {
   window.location.href = `../Recipe-details/details.html?id=${id}`;
 }
 
-// ===== نوتيفيكيشن =====
 function showNotification(message) {
   const notif = document.getElementById('notification');
   notif.textContent = message;
