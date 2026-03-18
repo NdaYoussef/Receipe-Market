@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الوصفات المفضلة - سفرة</title>
+  <link rel="stylesheet" href="favourite.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="my-recipes">
+      <span class="recipes-icon">🍴</span>
+      <span class="recipes-text">وصفاتي</span>
+    </div>
+    <div class="topbar-right">
+      <a href="../Home-page/Index.html">الرئيسية</a>
+      <a href="../Recipes-page/recipes.html">الوصفات</a>
+      <a href="#">المفضلة</a>
+      <a href="#">السلة</a>
+    </div>
+    <div class="top-search">
+      <input type="text" placeholder="ابحث عن وصفة أو مكون...">
+      <span class="search-icon">🔍</span>
+    </div>
+    <div class="topbar-left">
+      <button class="avatar-btn">👤</button>
+      <button class="notif-btn">🔔</button>
+    </div>
+  </header>
+
+  <main class="favorites-main">
+    <div class="favorites-header">
+      <h1 class="favorites-title">الوصفات المفضلة</h1>
+      <p class="favorites-subtitle">جميع وصفاتك المختارة ومكوناتها في مكان واحد</p>
+      <button class="clear-all-btn" id="clearAllBtn">🗑️ مسح الكل</button>
+    </div>
+
+    <div class="filter-tabs">
+      <button class="filter-btn active" data-filter="all">الكل</button>
+      <button class="filter-btn" data-filter="dinner">وجبات رئيسية</button>
+      <button class="filter-btn" data-filter="dessert">حلويات</button>
+      <button class="filter-btn" data-filter="lunch">غداء</button>
+      <button class="filter-btn" data-filter="breakfast">فطار</button>
+    </div>
+
+    <div class="empty-state" id="emptyState" style="display:none;">
+      <div class="empty-icon">💔</div>
+      <h3>لا توجد وصفات مفضلة</h3>
+      <p>ابدأ بإضافة وصفاتك المفضلة من صفحة الوصفات</p>
+    </div>
+
+    <div class="recipes-grid" id="recipesGrid"></div>
+  </main>
+
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <div class="modal-icon">🗑️</div>
+      <h2>هل أنت متأكد من مسح جميع الوصفات المفضلة؟</h2>
+      <p>سيؤدي هذا الإجراء إلى إزالة جميع الوصفات من قائمتك المفضلة ولا يمكن التراجع عنه.</p>
+      <button class="confirm-btn" id="confirmClearBtn">🗑️ نعم، امسح الكل</button>
+      <button class="cancel-btn" id="cancelClearBtn">إلغاء</button>
+    </div>
+  </div>
+
+  <div class="notification" id="notification"></div>
+
+    <!-- footer -->
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-col brand">
+          <h3>سفرة</h3>
+
+          <p>
+            منصتكم المفضلة لاكتشاف أشهى الوصفات العربية والعالمية نوفر لكم
+            المكونات الطازجة والخطوات البسيطة لكل وجبة.
+          </p>
+
+          <div class="social">
+            <span>○</span>
+            <span>○</span>
+            <span>○</span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>روابط سريعة</h3>
+
+          <ul>
+            <li>عن سفرة</li>
+            <li>أحدث الوصفات</li>
+            <li>الطباخون المتميزون</li>
+            <li>انضم إلينا</li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>الدعم والمساعدة</h3>
+
+          <ul>
+            <li>الأسئلة الشائعة</li>
+            <li>سياسة الخصوصية</li>
+            <li>شروط الاستخدام</li>
+            <li>اتصل بنا</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>تحميل التطبيق</h3>
+
+          <p>احصل على تجربة أفضل عبر تطبيقنا للهواتف الذكية.</p>
+
+          <div class="apps">
+            <div class="app-btn">App Store</div>
+
+            <div class="app-btn">Google Play</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">جميع الحقوق محفوظة © 2024 سفرة للوصفات والطبخ</div>
+    </footer>
+    <!-- end footer -->
+
+  <script src="favourite.js"></script>
+</body>
+</html>
