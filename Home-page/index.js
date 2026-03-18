@@ -12,7 +12,6 @@ document.addEventListener("scroll", function () {
 //hero
 
 const DATA_PATH = "../data/recipes.json";
-
 let recipes = [];
 let index = 0;
 
