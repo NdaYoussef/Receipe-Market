@@ -92,3 +92,6 @@ Example branches:
 ## Project Goal
 
 Build a modern front-end application that demonstrates team collaboration, JavaScript logic, and dynamic cart functionality while simulating a recipe-based shopping experience.
+## Run it live !
+https://recipemarket.netlify.app/home-page/
+
